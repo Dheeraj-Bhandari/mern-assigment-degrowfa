@@ -1,8 +1,6 @@
 import React , {useState} from 'react'
 import MaterialTable from 'material-table'
 import { forwardRef } from "react";
-import Grid from "@material-ui/core/Grid";
-
 import AddBox from "@material-ui/icons/AddBox";
 import ArrowDownward from "@material-ui/icons/ArrowDownward";
 import Check from "@material-ui/icons/Check";
@@ -19,16 +17,13 @@ import RefreshIcon from "@material-ui/icons/Refresh";
 import SaveAlt from "@material-ui/icons/SaveAlt";
 import Search from "@material-ui/icons/Search";
 import ViewColumn from "@material-ui/icons/ViewColumn";
-import Alert from "@mui/material/Alert";
-
 import * as XLSX from 'xlsx'
 import { Box, Button } from '@material-ui/core';
-import {  TextField } from "@mui/material";
 import FileDownload from "js-file-download"
 import {downloadCsvTemplate} from '../api'
+import TextField from '@mui/material/TextField';
 
-
-
+// Table Icons
 const tableIcons = {
     Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
     RefreshIcon: forwardRef((props, ref) => <RefreshIcon {...props} ref={ref} />),
@@ -61,6 +56,7 @@ const UploadCSV = () => {
     
     const [json, setJson] = useState();
 
+    // Checking Extesion of Uplaoded file by client
     const getExtension = (file)=>{
         const fileName = file.name.split(".");
         const fileType = fileName[fileName.length-1]
@@ -71,6 +67,7 @@ const UploadCSV = () => {
         return false;
     }
 
+    // Converting File to Json to Display
     const convertToJson =(header, data)=>{
         const rows = []
         data.forEach(row=>{
@@ -84,6 +81,7 @@ const UploadCSV = () => {
         return rows;
     }
 
+    // Importing Excel File and Reading 
     const importedExcel = (e)=>{
         const file  = e.target.files[0];
 
@@ -122,6 +120,7 @@ const UploadCSV = () => {
         }
     }
 
+    // Template CSV download Function
     const downloadTemplateCSV = (e)=>{
         e.preventDefault();
         try {
@@ -132,10 +131,13 @@ const UploadCSV = () => {
         }
     }
 
+    // Download Uplaoded Excel File to JSON
     const dowloadTableDataAsJson=()=>{
        
         FileDownload(json, "json.json")
     }
+
+
   return (
     <Box mt={5} p={6}>
     

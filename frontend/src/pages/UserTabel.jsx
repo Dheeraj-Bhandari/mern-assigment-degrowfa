@@ -24,8 +24,10 @@ import axios from "axios";
 import Alert from "@mui/material/Alert";
 import { getUserApi, delteUserApi, updateUserApi, addUserApi } from "../api";
 import * as XLSX from "xlsx/xlsx.mjs";
-import { Box, Button } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 
+
+// Table Icons
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
   RefreshIcon: forwardRef((props, ref) => <RefreshIcon {...props} ref={ref} />),
@@ -51,6 +53,8 @@ const tableIcons = {
   ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />),
 };
 
+
+// Validating Email
 function validateEmail(email) {
   const re =
     /^((?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\]))$/;
@@ -72,7 +76,7 @@ function UserTabel() {
   const [iserror, setIserror] = useState(false);
   const [errorMessages, setErrorMessages] = useState([]);
 
-  // Fecth Data
+  // Fecth Users Data Function
 
   async function fecthUserData(){
     
@@ -91,6 +95,7 @@ function UserTabel() {
     fecthUserData()
   }, []);
 
+  // Handling Row Update
   const handleRowUpdate = (newData, oldData, resolve, reject) => {
     //validation
     let errorList = [];
@@ -134,6 +139,7 @@ function UserTabel() {
     }
   };
 
+  // Handling Row Add
   const handleRowAdd = (newData, resolve, reject) => {
     //validation
     let errorList = [];
@@ -177,6 +183,8 @@ function UserTabel() {
     }
   };
 
+
+  // Handling Row Delete
   const handleRowDelete = (oldData, resolve, reject) => {
     axios
       .delete(`${delteUserApi}/${oldData._id}`)
@@ -194,6 +202,7 @@ function UserTabel() {
       });
   };
 
+  // Download Table to CSV
   const downloadTableToCSV = () => {
     // Removing Unwanted row
 
