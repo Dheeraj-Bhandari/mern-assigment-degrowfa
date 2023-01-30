@@ -4,6 +4,7 @@ import { addUserApi, getUserApi } from "../api";
 import UserTabel from "./UserTabel";
 
 import axios from "axios";
+import { Grid } from "@material-ui/core";
 const Form = () => {
   const [name, setName] = useState("");
   const [dob, setDob] = useState("");
@@ -31,13 +32,19 @@ const Form = () => {
         console.log(error)
       }
     }
-  
-  return (
-    <>
-    <Box
-      mt={2}
-      width="100%"
-      sx={{ padding: "20px", p: 2, border: "1px solid grey" }}
+    
+    return (
+      <>
+      <h1 style={{"textAlign":"center", "marginTop":"20px"}}>Add User Data</h1>
+    <Grid
+      mt={20}
+      container
+      spacing={0}
+      direction="column"
+      alignItems="center"
+      justifyContent="center"
+      style={{ minHeight: '60vh' }}
+    
     >
       <FormControl action="">
         <TextField
@@ -86,9 +93,9 @@ const Form = () => {
           onChange={(e)=>setCountry(e.target.value)}
           />{" "}
         <br />
-        <Button onClick={HandleAddUser}>Submit</Button>
+        <Button onClick={HandleAddUser} variant="outlined" >Submit</Button>
       </FormControl>
-    </Box>
+    </Grid>
   
           </>
   );

@@ -1,15 +1,13 @@
 import './App.css';
-import Form from './pages/Form';
-import UploadCSV from './pages/UploadCSV';
-import UserTabel from './pages/UserTabel';
+import NavBar from './components/NavBar';
+import UserRoutes from './UserRoutes';
 
 function App() {
   return (
-    <div className="App">
-   <Form/>
-   <UserTabel/>
-   <UploadCSV/>
-    </div>
+    < >
+    <NavBar/>
+  <UserRoutes />
+    </>
   );
 }
 

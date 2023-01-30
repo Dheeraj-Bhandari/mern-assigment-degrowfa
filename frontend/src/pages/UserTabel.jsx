@@ -24,6 +24,7 @@ import axios from "axios";
 import Alert from "@mui/material/Alert";
 import { getUserApi, delteUserApi, updateUserApi, addUserApi } from "../api";
 import * as XLSX from "xlsx/xlsx.mjs";
+import { Box, Button } from '@material-ui/core';
 
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
@@ -210,9 +211,11 @@ function UserTabel() {
 
     XLSX.write(workBook, { bookType: "csv", type: "binary" });
     XLSX.writeFile(workBook, "UserData.csv");
-  };
+  }
+
+
   return (
-    <div className="App" style={{ marginTop: "60px" }}>
+    <div  style={{ marginTop: "60px" }}>
       <h2 style={{ textAlign: "center" }}>User Details</h2>
       <Grid container spacing={1}>
         <Grid item xs={1}></Grid>
@@ -234,12 +237,12 @@ function UserTabel() {
             icons={tableIcons}
             actions={[
               {
-                icon: () => <button>Export</button>,
+                icon: () => <Button>Export</Button>,
                 tooltip: "Export to CSV",
                 onClick: downloadTableToCSV,
                 isFreeAction: true,
               },
-              {icon:()=><button>Refresh</button>, tooltip : "Refresh", onClick:()=>fecthUserData(), isFreeAction:true}
+              {icon:()=><Button>Refresh</Button>, tooltip : "Refresh", onClick:()=>fecthUserData(), isFreeAction:true}
             ]}
             options={{
               headerStyle: { size: "80px" },
