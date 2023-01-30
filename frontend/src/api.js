@@ -1,4 +1,4 @@
-export const addUserApi = "http://localhost:5050/adduser"
-export const getUserApi = "http://localhost:5050/getusers"
-export const delteUserApi = "http://localhost:5050/deleteuser"
-export const updateUserApi = "http://localhost:5050/updateuser"
+export const addUserApi = "https://mern-assigment-degrowfa-backend.vercel.app/adduser"
+export const getUserApi = "https://mern-assigment-degrowfa-backend.vercel.app/getusers"
+export const delteUserApi = "https://mern-assigment-degrowfa-backend.vercel.app/deleteuser"
+export const updateUserApi = "https://mern-assigment-degrowfa-backend.vercel.app/updateuser"
