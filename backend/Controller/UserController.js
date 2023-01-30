@@ -73,5 +73,10 @@ export const updateUser = async (req, res) => {
 };
 
 export const downloadTemplateCsv = async (req, res)=>{
-  res.download("./asset/download.csv")
+  try {
+    res.download("./asset/download.csv")
+    
+  } catch (error) {
+    res.status(500).json((error))
+  }
 }
